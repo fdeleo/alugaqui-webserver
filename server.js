@@ -16,9 +16,10 @@ app.use(express.static('../alugaqui-client-web'));
 app.get('/bairro/:bairro', (req, res) =>{
 
   /* Logic to search properties that have the respective parameter*/ 
-  buscaImovel(req);
+  var resultado = buscaImovel(req);
+  
   /* Render listragemImoveis pages with the GET params from the request */
-  res.render('listagemImoveis.hbs' , req.params)
+  res.render('listagemImoveis.hbs' , resultado)
 });
 
 // Bind the application to a port on our machine (so it can actually work)
