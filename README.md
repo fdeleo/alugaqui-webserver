@@ -15,6 +15,10 @@ Initialize the repository
 Install ExpresssJS
 > npm install express@4.14.0 --save 
 
+For the View Engine on ExpressJS
+Using HandlebarsJS
+> npm install hbs@4.0.0 --save
+
 ### Starting the webserver
 
 Executing the WebServer
