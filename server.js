@@ -15,9 +15,8 @@ app.use(express.static('../alugaqui-client-web'));
 /* SEARCH - 1 - BAIRRO */
 app.get('/bairro/:bairro', (req, res) =>{
 
-  /* Logic to search properties that have the respective parameter*/ 
+  /* Logic to search properties that have the respective parameter*/
   var resultado = buscaImovel(req);
-  
   /* Render listragemImoveis pages with the GET params from the request */
   res.render('listagemImoveis.hbs' , resultado)
 });
@@ -27,35 +26,73 @@ app.listen(3000);
 
 
 /* Busca Imovel */
-
 function buscaImovel(req) {
   var paramBairro = req.params.bairro;
-  console.log("Busca do Bairro:");
+  var resultado = [];
+  var imoveis = criaImovel();
+
+  console.log('Imoveis: \n');
+  console.log(imoveis);
+
+  console.log('Bairro: \n');
   console.log(paramBairro);
-  
-  var buscaResultado = null;
-  
-  var imovel = criaImovel();
-  
-  console.log("\n Detalhes do Imovel");
-  console.log(imovel);
-  console.log(buscaResultado);
-    
-  if ( paramBairro == imovel.bairro ) {
-    buscaResultado = imovel ;
-    console.log(buscaResultado);
+
+  /* Get one item from collection imoveis and search trough its attributes */
+  var contadorImovel = 0;
+  console.log('\n BUSCA \n');
+
+  var imovel = undefined;
+
+  while ( (imovel = imoveis.shift()) != undefined ){
+    var bairro = imovel.bairro;
+    if (bairro == paramBairro){
+      contadorImovel++;
+      resultado.push(imovel);
+      console.log('Imovel: \n');
+      console.log(imovel);
+    }
   }
-    
-  return buscaResultado;
+
+  console.log('Resultado Final: \n');
+  console.log(resultado);
+
+  return resultado;
 }
 
+/* Cria Imovel */
 function criaImovel() {
-  var imovel = {
+  var imoveis = [];
+
+  var imovel1 = {
     bairro : "barra" ,
     endereco : "Rua de teste para validacao 200" ,
     cep: "00000-000"
-  };  
-  
-  return imovel ;
-}
+  };
 
+  imoveis.push(imovel1);
+  // console.log('Imoveis = Imovel1 \n');
+  // console.log(imoveis);
+
+  var imovel2 = {
+    bairro : "barra" ,
+    endereco : "Rua de teste para validacao 800" ,
+    cep: "22631-450"
+  };
+
+  imoveis.push(imovel2);
+  // console.log('Imoveis = Imovel1 + Imovel2 \n');
+  // console.log(imoveis);
+
+  var imovel3 = {
+    bairro : "botafogo" ,
+    endereco : "Rua de teste na zona sul 444" ,
+    cep: "55555-555"
+  };
+
+  var tamanho = imoveis.push(imovel3);
+  // console.log('Length Objeto:\n');
+  // console.log(tamanho);
+  // console.log('Imoveis = Imovel1 + Imovel2 + Imovel3 \n');
+  // console.log(imoveis);
+  return imoveis;
+}
