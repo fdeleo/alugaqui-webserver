@@ -28,7 +28,8 @@ app.listen(3000);
 /* Busca Imovel */
 function buscaImovel(req) {
   var paramBairro = req.params.bairro.toLowerCase();
-  var resultado = [];
+  resultado = { content: 'lista de imoveis'};
+  resultado.imovel = [];
   var imoveis = criaImovel();
 
   console.log('Imoveis: \n');
@@ -43,11 +44,11 @@ function buscaImovel(req) {
 
   var imovel = undefined;
 
-  while ( (imovel = imoveis.shift()) != undefined ){
+  while ( (imovel = imoveis.imovel.shift()) != undefined ){
     var bairro = imovel.bairro;
     if (bairro == paramBairro){
       contadorImovel++;
-      resultado.push(imovel);
+      resultado.imovel.push(imovel);
       console.log('Imovel: \n');
       console.log(imovel);
     }
@@ -61,7 +62,9 @@ function buscaImovel(req) {
 
 /* Cria Imovel */
 function criaImovel() {
-  var imoveis = [];
+
+  imoveis = { content: 'lista de imoveis'};
+  imoveis.imovel = [];
 
   var imovel1 = {
     bairro : "barra" ,
@@ -69,9 +72,9 @@ function criaImovel() {
     cep: "00000-000"
   };
 
-  imoveis.push(imovel1);
-  // console.log('Imoveis = Imovel1 \n');
-  // console.log(imoveis);
+  imoveis.imovel.push(imovel1);
+  console.log('Imoveis = Imovel1 \n');
+  console.log(imoveis);
 
   var imovel2 = {
     bairro : "barra" ,
@@ -79,7 +82,7 @@ function criaImovel() {
     cep: "22631-450"
   };
 
-  imoveis.push(imovel2);
+  imoveis.imovel.push(imovel2);
   // console.log('Imoveis = Imovel1 + Imovel2 \n');
   // console.log(imoveis);
 
@@ -89,7 +92,7 @@ function criaImovel() {
     cep: "55555-555"
   };
 
-  var tamanho = imoveis.push(imovel3);
+  var tamanho = imoveis.imovel.push(imovel3);
   // console.log('Length Objeto:\n');
   // console.log(tamanho);
   // console.log('Imoveis = Imovel1 + Imovel2 + Imovel3 \n');
