@@ -27,7 +27,7 @@ app.listen(3000);
 
 /* Busca Imovel */
 function buscaImovel(req) {
-  var paramBairro = req.params.bairro;
+  var paramBairro = req.params.bairro.toLowerCase();
   var resultado = [];
   var imoveis = criaImovel();
 
