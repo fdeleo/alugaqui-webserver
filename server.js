@@ -47,18 +47,16 @@ function buscaImovel(req) {
   //var paramBairro = req.params.bairro.toLowerCase();
   var searchUrl = 'http://138.68.27.226:8080/imoveis/';
   // Add later the complement with neighborhood
-  // var searchBairroUrl = searchUrl + paramBairro;
-  var searchBairroUrl = searchUrl;
+  var searchBairroUrl = searchUrl + paramBairro;
   var resultado = [];
 
   var busca = request({
-    url: searchUrl ,
+    url: searchBairroUrl ,
     json: true
   }
   , function (error, response, body)
   {
     if (!error && response.statusCode === 200) {
-          resultado = body ;
           console.log('BODY: \n');
           console.log(body); // Print the json response
 
