@@ -25,11 +25,15 @@ app.get('/bairro/:bairro', (req, res) =>{
   if (err) {
     return console.log(err);
   }
-  resultado = JSON.parse(data);
+  propertyData = JSON.parse(data);
+  var result = {
+                imovel: propertyData ,
+                };
+
   console.log('RESULTADO: \n');
-  console.log(resultado);
+  console.log(result);
   /* Render listragemImoveis pages with the GET params from the request */
-  res.render('listagemImoveis.hbs' , resultado);
+  res.render('listagemImoveis.hbs' , result);
   });
 
 });
