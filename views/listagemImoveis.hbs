@@ -1,18 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
     <title>ALUGAQUI - Listagem Imóveis</title>
   </head>
   <body>
-    <h1>
-      Aqui estão os imóveis que você procura:
-    </h1>
-    {{> imovel}}
-    <footer>
-      <h2>        
-        AlugAqui 2017
-      </h2>
-    </footer>
+    <div class="container-fluid">
+      <div class="searchDiv" style="width: 20%;margin: 20px 0 0 0;float: left;">
+        <input type="search" class="form-control" id="buscaBairro" placeholder="Bairro" onsearch="buscaImovel();" style="
+    width: 80%;
+    margin: 0 0 0 0;
+    float: left;
+    min-width: 180px;
+"/>
+        <input type="button" id="searchButton" value="Ir" style="
+    width: 10%;
+    height: 32px;
+    min-width: 30px;
+" />
+      </div>
+      <!-- DIV displaying search results -->
+      <div class="resultsDiv" style="width: auto;float: left;">
+      <h4>
+        Aqui estão os imóveis que você procura:
+      </h4>
+      <p>
+      {{> imovel}}
+      </p>
+    </div>
+      <footer style="position: fixed;bottom: 0;">
+        <h5>
+          AlugAqui 2017
+        </h5>
+      </footer>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   </body>
 </html>
