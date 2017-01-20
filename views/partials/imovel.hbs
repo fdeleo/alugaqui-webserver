@@ -1,24 +1,25 @@
 {{#each imovel}}
 
-<div style="margin-top: 20px; margin-bottom: 20px;">
-  <div class=".col-md-6 .col-md-offset-3" style="border-width: 5px;
+  <div class="row" style="border-width: 5px;
     border-radius: 10px;
     border-style: outset;
     padding: 10px;
-    display: flex;
+    margin-left: 5px;
+    overflow: auto;
+    margin-top: 20px; margin-bottom: 20px;
 ">
-    <div style="float: left">
+    <div class=".col-md-4 listingImage" style="float: left">
       <img style="display: block; max-width: 250px;" class="vh-photo mceItem" src="https://visualhunt.com/photos/m/6/apartment-accommodation-flat-loft-domicile.jpg">
     </div>
-    <div style="
+    <div class=".col-md-6 listingContents" style="
     float: left;
     margin-left: 20px;
+    margin-top: 5px;
 ">
         Bairro: {{neighborhood}}
       <br>
         Endereço: {{address}}
     </div>
   </div>
-</div>
 
 {{/each}}
