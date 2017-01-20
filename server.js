@@ -21,10 +21,6 @@ app.get('/bairro/:neighborhood', (req, res, next) =>{
   var searchUrl = 'http://138.68.27.226:8080/imoveis/';
   // Add later the complement with neighborhood
   var searchBairroUrl = searchUrl + paramBairro;
-  console.log('Teste GET: \n');
-  console.log(req.params);
-  console.log('Neighborhood URL: \n');
-  console.log(searchBairroUrl);
 
   request({
       url: searchBairroUrl ,
@@ -32,8 +28,6 @@ app.get('/bairro/:neighborhood', (req, res, next) =>{
     }
     , function (error, response, body){
       if (!error && response.statusCode === 200) {
-        console.log('BODY: \n');
-        console.log(body); // Print the json response
         var propertyData = body;
 
         if ( body == '[]' || body == undefined ){
@@ -43,9 +37,7 @@ app.get('/bairro/:neighborhood', (req, res, next) =>{
         else {
           var result = {
                            imovel: propertyData ,
-                        };
-          console.log('RESULTADO: \n');
-          console.log(result);
+                        };        
         /* Render listagemImoveis pages with the GET params from the request */
           res.render('listagemImoveis.hbs' , result);
         }
